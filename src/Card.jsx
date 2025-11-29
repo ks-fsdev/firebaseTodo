@@ -1,16 +1,34 @@
-import React from "react";
-import { CiTrash } from "react-icons/ci";
+import { motion } from "motion/react";
 
 function Card({ title, handleDelete, id }) {
   return (
-    <div className="p-5 bg-cyan-50 border mt-4 border-cyan-100 rounded-lg transition-all duration-150 ease-in-out hover:shadow-lg flex items-center justify-between">
-      <p className="text-cyan-900">{title}</p>
-      <button
-        onClick={() => handleDelete(id)}
-        className="text-xl text-neutral-600 hover:text-red-700 cursor-pointer ">
-        <CiTrash />
-      </button>
-    </div>
+    <motion.div
+      layout
+      key={id}
+      initial={{ opacity: 0, x: 0, y: -10 }}
+      animate={{ opacity: 1, x: 0, y: 0 }}
+      exit={{ opacity: 0, x: -40, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}>
+      <div className="p-3 mb-5 m-auto border border-neutral-500 transition-all duration-300 ease-in-out rounded-xl  flex justify-between ">
+        <p className="text-lg">{title}</p>
+
+        <button
+          onClick={() => handleDelete(id)}
+          id="taskDelete"
+          className="flex items-center justify-between p-1 gap-2 text-sm hover:cursor-pointer hover:text-red-600 transition duration-500 ${statusDelBtn}">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="bi bi-trash3"
+            viewBox="0 0 16 16">
+            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+          </svg>
+          <p>Delete</p>
+        </button>
+      </div>
+    </motion.div>
   );
 }
 
