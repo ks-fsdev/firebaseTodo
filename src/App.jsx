@@ -35,9 +35,8 @@ function App() {
         }, 300);
 
         fetchTodos();
+        taskInput.current.value = "";
       });
-
-    console.log(task);
   }
 
   function fetchTodos() {
@@ -61,6 +60,8 @@ function App() {
   const handleDelete = (id) => {
     console.log("handle deleted" + id);
     axios.delete(`${firebaseUrl}todos/${id}.json`).then(() => fetchTodos());
+
+    
   };
 
   return (
@@ -146,7 +147,7 @@ function App() {
                   );
                 })}
             </div>
-          </div>{" "}
+          </div>
         </div>
       ) : (
         <Intro />

@@ -21,7 +21,7 @@ function Intro() {
       </main>
 
       {/* Bottom auth buttons */}
-      <footer className="w-full px-4 pb-8 flex mt-20 flex-col items-center gap-3">
+      <div className="w-full px-4 pb-8 flex md:mt-20 flex-col items-center gap-3">
         <SignedOut>
           <div className="flex flex-col sm:flex-row gap-3 w-full max-w-xs">
             <SignInButton mode="modal">
@@ -37,7 +37,7 @@ function Intro() {
             </SignUpButton>
           </div>
         </SignedOut>
-      </footer>
+      </div>
     </div>
   );
 }
